@@ -182,7 +182,7 @@
                 android:textSize="25sp" />
 
             <Button
-                android:id="@+id/btn_minus"
+                android:id="@+id/btn_sub"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/gray"
