@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eight.setOnClickListener(this);
         nine.setOnClickListener(this);
         zero.setOnClickListener(this);
+        point.setOnClickListener(this);
+        del.setOnClickListener(this);
+        clean.setOnClickListener(this);
+        add.setOnClickListener(this);
+        sub.setOnClickListener(this);
+        div.setOnClickListener(this);
+        mul.setOnClickListener(this);
 
         StatusBarCompat.setStatusBarColor(this, 0xFAFAFA,true);
     }
@@ -61,15 +68,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) { /*用swtich（）方法，判断点击按钮的id*/
-            case R.id.btn_clean: /*清除，直接将输入的所有符号清空*/
+        switch (v.getId()) {
+            case R.id.btn_clean:
                 txt.setText(null);
                 break;
-            /*数字，小数点按键*/
             case R.id.btn_1:
-                String str1 = txt.getText().toString(); /*获取输入内容并转为string类型*/
-                str1+="1"; /*拼接字符串*/
-                txt.setText(str1); /*显示输入内容*/
+                String str1 = txt.getText().toString();
+                str1+="1";
+                txt.setText(str1);
                 break;
             case R.id.btn_2:
                 String str2 = txt.getText().toString();
@@ -117,18 +123,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txt.setText(strr);
                 break;
             case R.id.btn_point:
-                String strd = txt.getText().toString();
-                strd += ".";
-                txt.setText(strd);
+                String strb = txt.getText().toString();
+                strb += ".";
+                txt.setText(strb);
                 break;
             case R.id.btn_del:
                 String str = txt.getText().toString();
-                // 点击删除按钮，删除一个字符
                 if (str != null && !str.equals("")) {
                     str = str.substring(0, str.length() - 1);
                     txt.setText(str);
                 }
                 break;
+            case R.id.btn_add:
+                String stra = txt.getText().toString();
+                stra+="+";
+                txt.setText(stra);
+                break;
+            case R.id.btn_sub:
+                String strs = txt.getText().toString();
+                strs+="-";
+                txt.setText(strs);
+                break;
+            case R.id.btn_multiply:
+                String strm = txt.getText().toString();
+                strm+="*";
+                txt.setText(strm);
+                break;
+            case R.id.btn_divide:
+                String strd = txt.getText().toString();
+                strd+="/";
+                txt.setText(strd);
+                break;
+
         }
+    }
+
+    public int cal(int num1, int num2, int oper) {
+        int res = 0;
+        switch (oper) {
+            case '*':
+                res = num1 * num2;
+                break;
+            case '/':
+                res = num2 / num1;
+                break;
+            case '-':
+                res = num2 - num1;
+                break;
+            case '+':
+                res = num1 + num2;
+                break;
+            default:
+                break;
+        }
+        return res;
     }
 }
